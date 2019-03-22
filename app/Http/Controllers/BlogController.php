@@ -7,8 +7,12 @@ use App\Post;
 
 class BlogController extends Controller
 {
+	protected $limit = 5;
     public function index(){
-    	$posts = Post::all();
+    	//\DB::enableQueryLog();
+    	$posts = Post::with('author')->orderBy('created_at','desc')->paginate($this -> limit);
+    	#$posts = Post::with('author')->orderBy('created_at','desc')->Simplepaginate(3);
     	return view('blog.index',compact('posts'));
+    	//dd(\DB::getQueryLog());
     }
 }
