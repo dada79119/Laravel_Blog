@@ -15,4 +15,9 @@ class BlogController extends Controller
     	return view('blog.index',compact('posts'));
     	//dd(\DB::getQueryLog());
     }
+    public function show($id)
+    {
+    	$post = Post::FindOrFail($id);
+    	return view("blog.show",compact('post'));
+    }
 }
