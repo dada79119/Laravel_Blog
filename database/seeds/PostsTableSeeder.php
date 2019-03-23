@@ -13,7 +13,7 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         // reset the posts table
-        DB::table('posts')->truncate();
+        #DB::table('posts')->truncate();
 
         // generate 10 data
         $posts = [];

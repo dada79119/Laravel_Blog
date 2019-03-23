@@ -12,7 +12,7 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
 
-        DB::table('categories')->truncate();
+        #DB::table('categories')->truncate();
         DB::table('categories')->insert([
         	[
         	'title'=>'Web Design',
@@ -38,7 +38,7 @@ class CategoriesTableSeeder extends Seeder
 
     	//update posts table data
     	for ($posts_id=1; $posts_id <= 10; $posts_id++) { 
-    		$category_id = rand(1,6);
+    		$category_id = rand(1,5);
 
     		DB::table('posts')
     		->where('id',$posts_id)

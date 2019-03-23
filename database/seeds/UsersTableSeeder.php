@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
     	// reset users table
-        DB::table('users')->truncate();
+        #DB::table('users')->truncate();
 
         // generate 3 users
         DB::table('users')->insert([

@@ -6,12 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-	public function author()
-	{
-		return $this->belongsTo(User::class);
-	}
-
-    public function getimageUrlAttribute($value)
+    public function getimageUrlAttribute()
     {
 
     	$imageUrl = "";
@@ -25,8 +20,19 @@ class Post extends Model
 
     	return $imageUrl;
     }
-    public function getDateAttribute($value)
+    public function getDateAttribute()
     {
     	return $this->created_at ->diffForHumans();
     }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->hasMany(Category::class);
+    }
+
 }

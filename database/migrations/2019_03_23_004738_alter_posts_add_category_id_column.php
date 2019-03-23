@@ -14,8 +14,8 @@ class AlterPostsAddCategoryIdColumn extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('category_id')->unsigned()->nullable();
-            #$table->foreign('category_id')->references('id')->on('categories')->onDelete('restric');
+            $table->unsignedInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
