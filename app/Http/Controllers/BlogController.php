@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\User;
 use DB;
 
 class BlogController extends Controller
@@ -33,5 +34,15 @@ class BlogController extends Controller
     {
     	// $post = Post::FindOrFail($id);
     	return view("blog.show",compact('post'));
+    }
+
+    public function author(User $author)
+    {
+        $posts = $author->posts()
+                        ->with('category')
+                        ->orderBy('created_at','desc')
+                        ->paginate($this -> limit);
+        
+        return view('blog.index',compact('posts'));
     }
 }
