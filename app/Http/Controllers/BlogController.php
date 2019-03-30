@@ -13,9 +13,8 @@ class BlogController extends Controller
 	protected $limit = 5;
     public function index(){
 
-    	// \DB::enableQueryLog();
     	$posts = Post::with('author')->orderBy('created_at','desc')->paginate($this -> limit);
-        // dd(\DB::getQueryLog());
+        
         return view('blog.index',compact('posts'));
     	
     }
@@ -32,7 +31,9 @@ class BlogController extends Controller
 
     public function show(Post $post)
     {
-    	// $post = Post::FindOrFail($id);
+    	
+        $post->increment('view_count');
+
     	return view("blog.show",compact('post'));
     }
 
