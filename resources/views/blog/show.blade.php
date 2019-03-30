@@ -46,7 +46,7 @@
                     <div class="media">
                       <div class="media-left">
                         <a href="{{ route('author', $post->author->slug) }}">
-                          <img alt="Author 1" src="/img/author.jpg" class="media-object">
+                          <img alt="{{ $post->author->name }}" src="{{ $post->author->gravatar() }}" class="media-object" width="100px" height="100px">
                         </a>
                       </div>
                       <div class="media-body">
@@ -62,7 +62,7 @@
                               {{ $postCount }} {{ str_plural('post', $postCount) }}
                           </a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad aut sunt cum, mollitia excepturi neque sint magnam minus aliquam, voluptatem, labore quis praesentium eum quae dolorum temporibus consequuntur! Non.</p>
+                        <p>{!! $post->author->bio !!}</p>
                       </div>
                     </div>
                 </article>

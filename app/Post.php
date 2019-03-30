@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 
 class Post extends Model
@@ -34,6 +35,10 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function getBioHtmlAttribute($value)
+    {
+        return $this->bio ? Markdown::converToHtml(e($this->bio)) : null;
     }
 
 }

@@ -46,4 +46,13 @@ class User extends Authenticatable
     {
         return 'slug';
     }
+
+    public function gravatar()
+    {
+        $email = $this->email;
+        $default = "https://avatars0.githubusercontent.com/u/16234020?s=460&v=4";
+        $size = 100;
+        $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+        return $grav_url;
+    }
 }
