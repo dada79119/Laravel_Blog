@@ -31,7 +31,8 @@ class PostsTableSeeder extends Seeder
         		'slug' => $faker->slug(),
         		'image' => rand(1,0) == 1? $image : Null,
         		'created_at' => $date,
-        		'updated_at' => $date
+        		'updated_at' => $date,
+                'view_count' => rand(1,10)*10,
         	];
         }
         DB::table('posts')->insert($posts);
