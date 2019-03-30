@@ -8,9 +8,7 @@
                 <article class="post-item post-detail">
                     @if($post->image_url)
                         <div class="post-item-image">
-                            <a href="#">
-                                <img src="{{ $post->image_url }}" alt="{{ $post->title }}">
-                            </a>
+                            <img src="{{ $post->image_url }}" alt="{{ $post->title }}">
                         </div>
                     @endif
 
@@ -20,9 +18,18 @@
 
                             <div class="post-meta no-border">
                                 <ul class="post-meta-group">
-                                    <li><i class="fa fa-user"></i><a href="#"> {{ $post->author->name }}</a></li>
-                                    <li><i class="fa fa-clock-o"></i><time>{{ $post->date }}</time></li>
-                                    <li><i class="fa fa-tags"></i><a href="#"> Blog</a></li>
+                                    <li>
+                                        <i class="fa fa-user"></i>{{ $post->author->name }}
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-clock-o"></i><time>{{ $post->date }}</time>
+                                    </li>
+                                    <li><i class="fa fa-tags"></i>
+                                        <a href="
+                                            {{ route('category', $post->category->slug) }}"> 
+                                            {{ $post->category->title }}
+                                        </a>
+                                    </li>
                                     <li><i class="fa fa-comments"></i><a href="#">4 Comments</a></li>
                                 </ul>
                             </div>
