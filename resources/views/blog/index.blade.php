@@ -66,8 +66,6 @@
                     @endforeach
 
                 @endif
-                
-
 
                 <nav>
                   {{ $posts->links() }}

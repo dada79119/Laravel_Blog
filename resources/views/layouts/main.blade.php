@@ -5,6 +5,8 @@
     <title>MyBlog | My Awesome Blog</title>
 
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+    
+    <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="/css/custom.css">
@@ -42,7 +44,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <p class="copyright">&copy; 2016 Edo Masaru</p>
+                    <p class="copyright">&copy; {{date('Y')}}</p>
                 </div>
                 <div class="col-md-4">
                     <nav>
@@ -58,6 +60,5 @@
         </div>
     </footer>
 
-    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
