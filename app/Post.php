@@ -62,4 +62,25 @@ class Post extends Model
         return $query->orderBy('view_count', 'desc');
     }
 
+    public function dateFormatted($showTimes = false)
+    {
+        $formate = "Y/m/d";
+        if($showTimes) $formate .= " H:i:s";
+        return $this->created_at->format($formate);
+    }
+
+    public function publishcationLabel()
+    {
+        if (!$this->published_at){
+            return '<span class="label label-warning">Draft</span>';
+        }
+        elseif ($this->published_at && $this->published_at->isFuture()) {
+            return '<span class="label label-info">Sechedule</span>';
+        }
+        else{
+            return '<span class="label label-success">Published</span>';
+        }
+
+    }
+
 }

@@ -18,7 +18,7 @@ Class NavigationComposer
 	{
 
         $categories = Category::with('posts')->orderBy('title','asc')->get();
-
+        
         $view->with('categories',$categories);
         
 	}

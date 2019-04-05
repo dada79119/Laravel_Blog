@@ -20,7 +20,7 @@ class BlogController extends Controller
     }
 
     public function category(Category $category){
-        
+
         $posts = $category  ->posts()
                             ->with('author')
                             ->orderBy('created_at','desc')
