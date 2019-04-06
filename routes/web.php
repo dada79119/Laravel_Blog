@@ -39,5 +39,11 @@ Route::put('/backend/blog/restore/{id}',[
 	'uses'  =>'Backend\BlogController@restore',
 	'as'    =>'blog.restore'
 ]);
+Route::delete('/backend/blog/force-destroy/{id}',[
+	'uses'  =>'Backend\BlogController@forceDestroy',
+	'as'    =>'blog.force-destroy'
+]);
+
+
 
 Route::resource('/backend/blog', 'Backend\BlogController');
