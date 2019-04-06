@@ -37,14 +37,14 @@
                         <li>
                             @if($post->image_url)
                                 <div class="post-image">
-                                    <a href="{{ route('blog.show', $post->slug) }}">
+                                    <a href="{{ route('blog.shows', $post->slug) }}">
                                         <img src="{{ $post->image_thumb_url }}" />
                                     </a>
                                 </div>
                             @endif
                             <div class="post-body">
                                 <h6>
-                                    <a href="{{ route('blog.show', $post->slug) }}">
+                                    <a href="{{ route('blog.shows', $post->slug) }}">
                                         {{ $post->title }}
                                     </a>
                                 </h6>
