@@ -12,7 +12,16 @@
             <small>Display All Blog posts</small>
           </h1>
           <ol class="breadcrumb">
-            <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+
+            <li>
+            	<a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Dashboard</a>
+            </li>
+            <li>
+            	<a href="{{ route('blog.index') }}">Blog</a>
+            </li>
+            <li>
+            	All Posts
+            </li>
           </ol>
         </section>
 
@@ -22,20 +31,33 @@
               <div class="col-xs-12">
               	<!-- box -->
                 <div class="box">
+                	<div class="box-header">
+	                	<div class="pull-left">
+	                		<a href="{{ route('blog.create') }}" class="btn btn-success">
+	                			Add New
+	                		</a>	
+	                	</div>
+                	</div>
+
                   <!-- box-body -->
                   <div class="box-body">
-                        <table class="table table-bordered table-inverse table-hover">
-                        	<thead>
-                        		<tr>
-                        			<th>Action</th>
-                        			<th>Title</th>
-                        			<th>Author</th>
-                        			<th>Category</th>
-                        			<th>Date</th>
-                        		</tr>
-                        	</thead>
-                        	<tbody>
-                        		@foreach($posts as $post)
+                  	@if (!$posts->count())
+	                  	<div class="alert alert-danger">
+	                  		<strong>No record found</strong>
+	                  	</div>
+                  	@else
+	                    <table class="table table-bordered table-inverse table-hover">
+	                    	<thead>
+	                    		<tr>
+	                    			<th>Action</th>
+	                    			<th>Title</th>
+	                    			<th>Author</th>
+	                    			<th>Category</th>
+	                    			<th>Date</th>
+	                    		</tr>
+	                    	</thead>
+	                    	<tbody>
+	                    		@foreach($posts as $post)
 	                        		<tr>
 	                        			
 	                        			<td>
@@ -58,9 +80,10 @@
 	                        			</td>
 	                        			
 	                        		</tr>
-                        		@endforeach
-                        	</tbody>
-                        </table>
+	                    		@endforeach
+	                    	</tbody>
+	                    </table>
+	                @endif
                   </div>
                   <!-- box-body -->
                   <div class="box-footer clearfix">
@@ -69,8 +92,8 @@
 	                	{{ $posts->render() }}
 	                </div>
 	                <div class="pull-right">
-	                	<?php $count = count($posts); ?>
-	                	<small>{{ $count }} items</small>
+	                	
+	                	<small>{{ $postCount }} items</small>
 	                </div>
                   </div>
                 </div>
@@ -81,4 +104,10 @@
         </section>
         <!-- /.content -->
     </div>
+@endsection
+
+@section("script")
+	<script type="text/javascript">
+		$('ul.pagination').addClass('no-margin pagination-sm');
+	</script>
 @endsection
