@@ -23,7 +23,7 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             
             'title'         => 'required',
             'slug'          => 'required|unique:posts',
@@ -33,5 +33,13 @@ class PostRequest extends FormRequest
             'image'         => 'mimes:jpg,jpeg,bmp,png',
         
         ];
+
+        switch ($this->method()) {
+            case 'PUT':
+            case 'PATCH':
+                $rules['slug'] = 'required|unique:posts,slug,'.$this->route('blog');
+                break;
+        }
+        return $rules;
     }
 }
