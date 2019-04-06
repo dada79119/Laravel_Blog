@@ -13,28 +13,31 @@ class Post extends Model
     public function getimageUrlAttribute()
     {
 
-        $imageUrl = "";
+        $imageUrl  = "";
+        $directory = config('cms.image.directory');
 
         if (!is_null($this->image)){
 
-            $imagePath = public_path()."/img/".$this->image;
+            $imagePath = public_path()."/{$directory}/".$this->image;
 
-            if (file_exists($imagePath)) $imageUrl = asset("img/".$this->image);
+            if (file_exists($imagePath)) $imageUrl = asset("{$directory}/".$this->image);
         }       
 
         return $imageUrl;
     }
+
     public function getimageThumbUrlAttribute()
     {
 
         $imageUrl = "";
 
         if (!is_null($this->image)){
+            $directory = config('cms.image.directory');
             $ext       = substr(strrchr($this->imgage, "."), 1);
             $thumbnail = str_replace(".{$ext}", "_thumb.{$ext}", $this->image);
-            $imagePath = public_path()."/img/".$thumbnail;
+            $imagePath = public_path()."/{$directory}/".$thumbnail;
 
-            if (file_exists($imagePath)) $imageUrl = asset("img/".$thumbnail);
+            if (file_exists($imagePath)) $imageUrl = asset("{$directory}/".$thumbnail);
         }       
 
         return $imageUrl;
