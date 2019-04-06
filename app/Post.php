@@ -8,6 +8,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 
 class Post extends Model
 {
+    protected $fillable = ['title','slug','excerpt','body','published_at','category_id'];
 
     public function getimageUrlAttribute()
     {

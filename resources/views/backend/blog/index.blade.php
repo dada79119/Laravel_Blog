@@ -19,7 +19,7 @@
             <li>
             	<a href="{{ route('blog.index') }}">Blog</a>
             </li>
-            <li>
+            <li class="active">
             	All Posts
             </li>
           </ol>
@@ -41,6 +41,11 @@
 
                   <!-- box-body -->
                   <div class="box-body">
+                  	@if (session('message'))
+                  		<div class="alert alert-success">
+                  			{{ session('message') }}
+                  		</div>
+                  	@endif
                   	@if (!$posts->count())
 	                  	<div class="alert alert-danger">
 	                  		<strong>No record found</strong>
