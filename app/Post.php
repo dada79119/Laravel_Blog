@@ -78,16 +78,29 @@ class Post extends Model
 
     public function publishcationLabel()
     {
-        if (!$this->published_at){
+        if (!$this->created_at){
             return '<span class="label label-warning">Draft</span>';
         }
-        elseif ($this->published_at && $this->published_at->isFuture()) {
+        elseif ($this->created_at && $this->created_at->isFuture()) {
             return '<span class="label label-info">Sechedule</span>';
         }
         else{
             return '<span class="label label-success">Published</span>';
         }
 
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('created_at', '<=', date("Y-m-d H:i:s"));
+    }
+    public function scopeScheduled($query)
+    {
+        return $query->where('created_at', '>', date("Y-m-d H:i:s"));
+    }
+    public function scopeDraft($query)
+    {
+        return $query->whereNull('created_at');
     }
 
 }
