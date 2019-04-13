@@ -49,7 +49,7 @@
 				
 
 				<div class='input-group date' id='datetimepicker1'>
-                    {!! Form::text('created_at', null, ['class' => 'form-control', 'placeholder' => 'Y-m-d H:i:s']) !!}
+                    {!! Form::text('published_at', null, ['class' => 'form-control', 'placeholder' => 'Y-m-d H:i:s']) !!}
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -62,10 +62,10 @@
   		</div>
   		<div class="box-footer clearfix">
   			<div class="pull-left">
-  				{!! Form::submit('Save Draft',['class' => 'btn btn-default']) !!}
+  				{!! Form::submit('Save Draft',['id' => 'draft-btn', 'class' => 'btn btn-default']) !!}
   			</div>
   			<div class="pull-right">
-  				{!! Form::submit('Publish',['class' => 'btn btn-primary']) !!}		
+  				{!! Form::submit('Publish',['id' => 'save-btn', 'class' => 'btn btn-primary']) !!}		
   			</div>
   			
   		</div>

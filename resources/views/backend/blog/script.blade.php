@@ -1,7 +1,7 @@
 @section("script")
 	<script type="text/javascript">
 		$('ul.pagination').addClass('no-margin pagination-sm');
-		// fix bug
+		
 		$('#title').on('blur', function(){
 			var theTitle 	= this.value.toLowerCase().trim();
 				slugInput	= $('#slug');
@@ -11,7 +11,6 @@
 								      .replace(/^-+$/g,'-')
 			slugInput.val(theSlug);
 		});
-		// ! fix bug
 
 		var simplemde1 = new SimpleMDE({element: $("#excerpt")[0] });
 		var simplemde2 = new SimpleMDE({element: $("#body")[0] });
@@ -22,9 +21,13 @@
 		});
 
 		$('#draft-btn').click(function(e){
+			$('#published_at').val('');
 			e.preventDefault();
 			$('#post-form').submit();
 		});
+
+	
+		
 
 
 	</script>

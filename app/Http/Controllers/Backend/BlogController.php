@@ -79,6 +79,7 @@ class BlogController extends BackendController
      */
     public function store(Requests\PostRequest $request)
     {
+
         $data = $this->handleRequest($request);
         $request->user()->posts()->create($data);
         
@@ -147,9 +148,10 @@ class BlogController extends BackendController
      */
     public function update(Requests\PostRequest $request, $id)
     {
+
+        $data     = $this->handleRequest($request);
         $post     = Post::findOrFail($id);
         $oldImage = $post->image;
-        $data     = $this->handleRequest($request);
         $post->update($data);
 
         if ($oldImage != $post->image){
@@ -210,7 +212,7 @@ class BlogController extends BackendController
     {
         return [
             'all' => Post::count(),
-            'publised' => Post::published()->count(),
+            'published' => Post::published()->count(),
             'scheduled' => Post::scheduled()->count(),
             'draft' => Post::draft()->count(),
             'trash' => Post::onlyTrashed()->count(),

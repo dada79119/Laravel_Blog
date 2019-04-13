@@ -64,6 +64,7 @@ class Post extends Model
     {
         return $this->bio ? Markdown::converToHtml(e($this->bio)) : null;
     }
+
     public function scopePopular($query)
     {
         return $query->orderBy('view_count', 'desc');
@@ -71,17 +72,17 @@ class Post extends Model
 
     public function dateFormatted($showTimes = false)
     {
-        $formate = "Y/m/d";
+        $formate = "Y-m-d";
         if($showTimes) $formate .= " H:i:s";
-        return $this->created_at->format($formate);
+        return $this->published_at;
     }
 
     public function publishcationLabel()
     {
-        if (!$this->created_at){
+        if (!$this->published_at){
             return '<span class="label label-warning">Draft</span>';
         }
-        elseif ($this->created_at && $this->created_at->isFuture()) {
+        elseif ($this->published_at && $this->published_at > date("Y-m-d h:i:s")) {
             return '<span class="label label-info">Sechedule</span>';
         }
         else{
@@ -92,15 +93,16 @@ class Post extends Model
 
     public function scopePublished($query)
     {
-        return $query->where('created_at', '<=', date("Y-m-d H:i:s"));
+        return $query->where('published_at', '<=', date("Y-m-d h:i:s"));
     }
+
     public function scopeScheduled($query)
     {
-        return $query->where('created_at', '>', date("Y-m-d H:i:s"));
+        return $query->where('published_at', '>', date("Y-m-d h:i:s"));
     }
     public function scopeDraft($query)
     {
-        return $query->whereNull('created_at');
+        return $query->whereNull('published_at');
     }
 
 }

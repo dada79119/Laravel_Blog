@@ -5,7 +5,8 @@
 			<th>Title</th>
 			<th>Author</th>
 			<th>Category</th>
-			<th>Date</th>
+            <th>Status</th>
+            <th>Date</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,14 +28,15 @@
 
     				{!! Form::close() !!}
     			</td>
-    			<td>{{ $post->title }}</td>
+                <td>{{ substr($post->title, 0, 35)."...." }}</td>
     			<td>{{ $post->author->name }}</td>
     			<td>{{ $post->category->title }}</td>
-    			<td>
-    				<abbr title="{{ $post->dateFormatted(true) }}">
-    					{{ $post->dateFormatted() }}
-    				</abbr>
-    			</td>
+    			<td>{!! $post->publishcationLabel() !!}</td>
+                <td>
+                    <abbr title="{{ $post->dateFormatted(true) }}">
+                        {{ $post->dateFormatted() }}
+                    </abbr>
+                </td>
     			
     		</tr>
 		@endforeach

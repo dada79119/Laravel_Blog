@@ -53,7 +53,7 @@
 	                				?>
 	                			@endif
 	                		@endforeach
-	                		{!! implode('|', $links) !!}
+	                		{!! implode(' | ', $links) !!}
 	                		
 
 	                	</div>
@@ -99,7 +99,5 @@
 @endsection
 
 @section("script")
-	<script type="text/javascript">
-		$('ul.pagination').addClass('no-margin pagination-sm');
-	</script>
+	
 @endsection
