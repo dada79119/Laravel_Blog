@@ -27,7 +27,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
   <!-- jasny css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
-  
 
   <!-- jQuery 2.2.3 -->
   <script src="/backend/js/jquery-2.2.3.min.js"></script>
@@ -43,7 +42,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
   <!-- jasny js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
-
    
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -67,7 +65,7 @@
 
 </div>
 <!-- ./wrapper -->
-@yield('script')
+
 
 </body>
 </html>

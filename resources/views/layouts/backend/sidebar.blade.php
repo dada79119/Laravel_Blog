@@ -19,21 +19,34 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="treeview" id="blog-item">
           <a href="#">
             <i class="fa fa-pencil"></i>
             <span>Blog</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+            <span class="pull-right-container" >
+              <i class="fa fa-angle-right" id="blog-arrow"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('blog.index') }}"><i class="fa fa-circle-o"></i> All Posts</a></li>
-            <li><a href="{{ route('blog.create') }}"><i class="fa fa-circle-o"></i> Add New</a></li>
+            <li><a href="{{ route('backend.blog.index') }}"><i class="fa fa-circle-o"></i> All Posts</a></li>
+            <li><a href="{{ route('backend.blog.create') }}"><i class="fa fa-circle-o"></i> Add New</a></li>
           </ul>
         </li>
-        <li><a href="#"><i class="fa fa-folder"></i> <span>Categories</span></a></li>
+        <li><a href="{{ route('backend.categories.index') }}"><i class="fa fa-folder"></i> <span>Categories</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
+  <script type="text/javascript">
+    $('#blog-item').on("click", function(e){
+    
+    if ($('#blog-arrow').hasClass("fa fa-angle-right")){
+        $('#blog-arrow').removeClass("fa fa-angle-right")
+                        .addClass("fa fa-angle-down");
+      }else{
+        $('#blog-arrow').removeClass("fa fa-angle-down")
+                        .addClass("fa fa-angle-right");
+      }
+
+    });
+  </script>

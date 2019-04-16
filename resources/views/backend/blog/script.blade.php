@@ -1,5 +1,7 @@
-@section("script")
+
+
 	<script type="text/javascript">
+		
 		$('ul.pagination').addClass('no-margin pagination-sm');
 		
 		$('#title').on('blur', function(){
@@ -26,9 +28,4 @@
 			$('#post-form').submit();
 		});
 
-	
-		
-
-
 	</script>
-@endsection

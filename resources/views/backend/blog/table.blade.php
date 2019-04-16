@@ -13,9 +13,9 @@
 		@foreach($posts as $post)
     		<tr>
     			<td>
-    				{!! Form::open(['method' => 'DELETE', 'route' => ['blog.destroy',$post->id]]) !!}
+    				{!! Form::open(['method' => 'DELETE', 'route' => ['backend.blog.destroy',$post->id]]) !!}
 
-    				<a href="{{ route("blog.edit", $post->id) }}" class="btn btn-xs btn-default">
+    				<a href="{{ route("backend.blog.edit", $post->id) }}" class="btn btn-xs btn-default">
     					<i class="fa fa-edit"></i>
     				</a>
 

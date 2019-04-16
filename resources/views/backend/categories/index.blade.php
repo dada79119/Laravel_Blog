@@ -1,6 +1,6 @@
 @extends('layouts.backend.main')
 
-@section('title', 'MyBlog | index')
+@section('title', 'MyBlog | Categories')
 
 @section('content')
 
@@ -8,8 +8,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Blog
-            <small>Display All Blog posts</small>
+            Categories
+            <small>Display All categories</small>
           </h1>
           <ol class="breadcrumb">
 
@@ -17,10 +17,10 @@
             	<a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Dashboard</a>
             </li>
             <li>
-            	<a href="{{ route('backend.blog.index') }}">Blog</a>
+            	<a href="{{ route('backend.categories.index') }}">Categories</a>
             </li>
             <li class="active">
-            	All Posts
+            	All categories
             </li>
           </ol>
         </section>
@@ -33,29 +33,11 @@
                 <div class="box">
                 	<div class="box-header clearfix">
 	                	<div class="pull-left">
-	                		<a href="{{ route('backend.blog.create') }}" class="btn btn-success">
+	                		<a href="{{ route('backend.categories.create') }}" class="btn btn-success">
 	                			<i class="fa fa-plus"></i> Add New
 	                		</a>	
 	                	</div>
-	                	<div class="pull-right" style="padding:7px 0;">
-	                		{{-- <a href="?status=all">All</a> | 
-	                		<a href="?status=published">Published</a> | 
-	                		<a href="?status=scheduled">Scheduled</a> |
-	                		<a href="?status=draft">Draft</a> |
-	                		<a href="?status=trash">Trash</a> --}}
-	                		
-	                		<?php $links = [] ?>
-	                		@foreach($statusList as $key => $value)
-	                			@if($value)
-	                				<?php $selected = Request::get('status') == $key ? 'selected-status' : '' ?>
-	                				<?php 
-	                				$links[] = "<a class=\"{$selected}\" href=\"?status={$key}\">". ucwords($key) ."({$value})</a>";
-	                				?>
-	                			@endif
-	                		@endforeach
-	                		{!! implode(' | ', $links) !!}
-	                		
-
+	                	<div class="pull-right">
 	                	</div>
                 	</div>
 
@@ -64,28 +46,23 @@
 
                   	@include('backend.partials.message')
 
-                  	@if (!$posts->count())
+                  	@if (!$categories->count())
 	                  	<div class="alert alert-danger">
 	                  		<strong>No record found</strong>
 	                  	</div>
                   	@else
-                  		@if($onlyTrashed)
-                  			@include('backend.blog.table-trash')
-                  		@else
-                  			@include('backend.blog.table')
-                  		@endif
-	                    
-	                @endif
+                  		@include('backend.categories.table')
+                  	@endif
                   </div>
                   <!-- box-body -->
                   <div class="box-footer clearfix">
 
                 	<div class="pull-left">
-	                	{{ $posts->appends(Request::query())->render() }}
+	                	{{ $categories->appends(Request::query())->render() }}
 	                </div>
 	                <div class="pull-right">
 	                	
-	                	<small>{{ $postCount }} items</small>
+	                	<small>{{ $categoriesCount }} items</small>
 	                </div>
                   </div>
                 </div>
@@ -96,6 +73,7 @@
         </section>
         <!-- /.content -->
     </div>
-
 @endsection
 
+@section("script")
+@endsection
