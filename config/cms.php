@@ -8,4 +8,5 @@
 			]
 		],
 		'default_category_id' => 5,
+		'default_user_id' 	  => 1,
 	];
