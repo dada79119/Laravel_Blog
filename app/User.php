@@ -55,4 +55,9 @@ class User extends Authenticatable
         $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
         return $grav_url;
     }
+
+    public function setPasswordAttribute($value)
+    {
+        if (!empty($value)) $this->attributes['password'] = bcrypt($value);
+    }
 }
