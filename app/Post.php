@@ -29,6 +29,16 @@ class Post extends Model
         return $imageUrl;
     }
 
+    public function getBodyHtmlAttribute()
+    {
+        return Markdown::convertToHtml($this->body);
+    }
+
+    public function getExcerptHtmlAttribute()
+    {
+        return Markdown::convertToHtml($this->excerpt);
+    }
+
     public function getimageThumbUrlAttribute()
     {
 

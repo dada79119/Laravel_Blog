@@ -30,7 +30,7 @@
                                             {{ $post->title }}
                                         </a>
                                     </h2>
-                                    <p>{{ $post->excerpt }}</p>
+                                    <p>{!! $post->excerpt_html !!}</p>
                                 </div>
 
                                 <div class="post-meta padding-10 clearfix">
