@@ -1,16 +1,19 @@
 <div class="col-md-4">
     <aside class="right-sidebar">
-        <!--
+        
         <div class="search-widget">
+            <form method="" action="{{ route('blog') }}">
             <div class="input-group">
-              <input type="text" class="form-control input-lg" placeholder="Search for...">
+              <input type="text" name="term" class="form-control input-lg" placeholder="Search for..." value="{{ request('term') }}">
               <span class="input-group-btn">
-                <button class="btn btn-lg btn-default" type="button">
+                <button class="btn btn-lg btn-default" type="submit">
                     <i class="fa fa-search"></i>
                 </button>
               </span>
             </div>
-        -->
+            </form>
+        </div>
+        
         <div class="widget">
             <div class="widget-heading">
                 <h4>Categories</h4>

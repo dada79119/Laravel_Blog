@@ -4,11 +4,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                @include('blog.alert')
+
                 @if(!$posts->count())
                     <dir class="alert alert-info">
                         <p>Nothing Found</p>
                     </dir>
                 @else
+
+
                     @foreach($posts as $post)
                     
                         <article class="post-item">
@@ -68,7 +72,7 @@
                 @endif
 
                 <nav>
-                  {{ $posts->links() }}
+                  {{ $posts->appends(request()->only(['term']))->links() }}
                 </nav>
             </div>
             @include('layouts.sidebar')

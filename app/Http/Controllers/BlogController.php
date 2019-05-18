@@ -13,7 +13,10 @@ class BlogController extends Controller
 	protected $limit = 5;
     public function index(){
 
-    	$posts = Post::with('author')->orderBy('created_at','desc')->paginate($this -> limit);
+    	$posts = Post::with('author')
+                ->orderBy('created_at','desc')
+                ->filter(request('term'))
+                ->paginate($this -> limit);
         
         return view('blog.index',compact('posts'));
     	

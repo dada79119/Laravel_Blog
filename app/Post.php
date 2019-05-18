@@ -114,5 +114,23 @@ class Post extends Model
     {
         return $query->whereNull('published_at');
     }
+    public function scopeFilter($query, $term)
+    {
+        // check if any term entered
+        if($term){
+            
+            $query->where(function($q) use ($term){
 
+                // $q->orwhereHas('author', function($qr) use ($term){
+                //     $qr->where('name', 'LIKE', "%{$term}%");
+                // });
+                // $q->orWhereHas('category', function($qr) use ($term){
+                //     $qr->where('title', 'LIKE', "%{$term}%");
+                // });
+                $q->orwhere('title', 'LIKE', "%{$term}%");
+                $q->orWhere('excerpt', 'LIKE', "%{$term}%");    
+            });
+            
+        }
+    }
 }
