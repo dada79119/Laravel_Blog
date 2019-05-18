@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 use App\User;
+use App\Tag;
 use DB;
 
 class BlogController extends Controller
@@ -13,7 +14,7 @@ class BlogController extends Controller
 	protected $limit = 5;
     public function index(){
 
-    	$posts = Post::with('author')
+    	$posts = Post::with('author', 'tags', 'category')
                 ->orderBy('created_at','desc')
                 ->filter(request('term'))
                 ->paginate($this -> limit);
@@ -25,7 +26,7 @@ class BlogController extends Controller
     public function category(Category $category){
 
         $posts = $category  ->posts()
-                            ->with('author')
+                            ->with('author', 'tags')
                             ->orderBy('created_at','desc')
                             ->paginate($this -> limit);
         
@@ -43,10 +44,22 @@ class BlogController extends Controller
     public function author(User $author)
     {
         $posts = $author->posts()
-                        ->with('category')
+                        ->with('category', 'tags')
                         ->orderBy('created_at','desc')
                         ->paginate($this -> limit);
         
         return view('blog.index',compact('posts'));
+    }
+
+    public function tag(Tag $tag){
+
+        $tagName = $tag->title;
+
+        $posts = $tag->posts()
+                     ->with('author', 'tags')
+                     ->orderBy('created_at','desc')
+                     ->paginate($this -> limit);
+        
+        return view('blog.index',compact('posts','tagName'));
     }
 }

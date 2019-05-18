@@ -5,12 +5,16 @@ use Illuminate\View\View;
 
 use App\Category;
 use App\Post;
+use App\Tag;
 
 Class NavigationComposer
 {
 	public function compose(View $view)
 	{
 		$this->composeCategories($view);
+
+		$this->composeTags($view);
+
 		$this->composePopularPosts($view);
 	}
 
@@ -21,6 +25,13 @@ Class NavigationComposer
         
         $view->with('categories',$categories);
         
+	}
+
+	public function composeTags(View $view)
+	{
+		$tags = Tag::has('posts')->get();
+
+		$view->with('tags', $tags);
 	}
 
 	private function composePopularPosts(View $view)
