@@ -21,4 +21,6 @@ The Screenshots of Blog Dashboard - User Management
 
 # How to play
 1. git clone https://github.com/dada79119/Laravel_Blog.git
-2. php artisan serve
+2. php artisan migrate
+3. php artisan db:seed
+4. php artisan serve
